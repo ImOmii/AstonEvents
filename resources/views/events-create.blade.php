@@ -44,6 +44,21 @@
                 height: 500px;
                 max-width: none;
             }
+            .card {
+                /* Add shadows to create the "card" effect */
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                transition: 0.3s;
+            }
+
+            /* On mouse-over, add a deeper shadow */
+            .card:hover {
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            }
+
+            /* Add some padding inside the card container */
+            .container {
+                padding: 2px 16px;
+            }
         }
 
     </style>
@@ -62,9 +77,9 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Home</a></li>
                 <li><a href="#">About</a></li>
-                <li><a href="#">Events</a></li>
+                <li class="active"><a href="#">Events</a></li>
                 <li><a href="#">Contact</a></li>
 
             </ul>
@@ -78,70 +93,28 @@
     </div>
 </nav>
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img src="images/astonlib.jpg" alt="Image">
-        </div>
-
-        <div class="item">
-            <img src="images/astonlib.jpg" alt="Image">
-        </div>
-
-        <div class="item">
-            <img src="https://placehold.it/1200x400?text=Another Image Maybe" alt="Image">
-        </div>
-    </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
 
 <div class="container text-center">
-    <h3>What We Do</h3><br>
-    <div class="row">
+    <h1>Create a new event</h1>
 
-        @foreach ($events as $event)
-            <div class="card">
-            {{ $event->description }}
-            </div>
-        @endforeach
+    <form action="{{ action('EventController@store') }}" method="post">
+        Event Name: <input type="text" name="name"/> <br>
+        Description: <textarea name="description" placeholder="Enter in a description"></textarea> <br>
+        Date/Time: <input type="text" name="dateTime"/> <br>
+        Category: <input type="text" name="category"/> <br>
+        Location: <input type="text" name="place"/> <br>
 
-        <form action="something.php" method="POST">
-            <input name="blab"/>
-        </form>
-        <!--<div class="col-sm-4">-->
-        <!--<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">-->
-        <!--<p>Current Project</p>-->
-        <!--</div>-->
-        <!--<div class="col-sm-4">-->
-        <!--<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">-->
-        <!--<p>Project 2</p>-->
-    </div>
-    <div class="col-lg-6">
-        <div class="well">
-            <p>Lorem ipsum dolor sit amet, et eius partiendo nec, pro dico dicunt bonorum ea. Dolor incorrupte usu eu, an vim dicam tollit senserit. Probatus neglegentur consectetuer ut vim, ei quodsi saperet mei. At nam semper appetere consectetuer, phaedrum pericula ei eam. Eruditi nominati reprimique id nam, per case nemore maiestatis ne. In vocent nonumes pri.
-            </p>
-        </div>
-        <div class="well">
-            <p>Some text..</p>
-        </div>
-    </div>
+
+        {{ csrf_field() }}
+        <input type="submit">
+    </form>
+</div>
+
+
+{{--<div class="well">--}}
+{{--<p>Some text..</p>--}}
+{{--</div>--}}
+</div>
 </div>
 </div><br>
 

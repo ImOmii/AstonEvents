@@ -14,6 +14,10 @@
                         </div>
                     @endif
 
+                    {{--@foreach($events as $event)--}}
+                        {{--{{ $event->name  }}--}}
+                    {{--@endforeach--}}
+
                     You are logged in!
                 </div>
             </div>

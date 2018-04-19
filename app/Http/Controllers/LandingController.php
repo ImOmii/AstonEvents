@@ -10,6 +10,8 @@ class LandingController extends Controller
     //
     public function landingIndex()
     {
-        return view('landing');
+        $events = Event::all();
+
+        return view('landing')->with(array('events' => $events));
     }
 }

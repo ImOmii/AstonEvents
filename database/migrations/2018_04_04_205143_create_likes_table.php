@@ -17,7 +17,7 @@ class CreateLikesTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->integer('event_id')->unsigned();
-
+//            $table->integer()
             $table->foreign('event_id')->references('id')->on('events');
 
         });

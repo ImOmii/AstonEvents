@@ -20,6 +20,7 @@ class CreateEventsTable extends Migration
             $table->timestamp('time');
             $table->integer('organiser_id')->unsigned();
             $table->string('category');
+            $table->string('image')->nullable();
             $table->string('place');
 
             $table->foreign('organiser_id')->references('id')->on('users');

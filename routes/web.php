@@ -16,7 +16,21 @@ Route::post('something', 'LandingController@submitIndex');
 Route::post('event/{id}', 'LandingController@eventIndex');
 Route::get('/login', 'LoginController@index');
 
+Route::get('events', 'EventController@index');              //GET ALL EVENTS
+Route::get('events/create', 'EventController@create')->middleware('auth.basic');      //GET a form to post a event
+Route::get('events/{id}', 'EventController@show');          //GET A SPECIFIC EVENT
+Route::post('events', 'EventController@store')->middleware('auth.basic');             //POST A EVENT
 
-Auth::routes();
+Route::get('categories/{categoryName}', 'CategoryController@index');
+
+Route::get('organisers/events', 'OrganiserController@events')->middleware('auth.basic');
+
+
+//Route::get('events', function () {
+//    return view('events');
+//});
+
+
+Auth::routes();;
 
 Route::get('/home', 'HomeController@index')->name('home');
