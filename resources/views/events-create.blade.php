@@ -97,13 +97,13 @@
 <div class="container text-center">
     <h1>Create a new event</h1>
 
-    <form action="{{ action('EventController@store') }}" method="post">
+    <form action="{{ action('EventController@store') }}" method="post" enctype="multipart/form-data">
         Event Name: <input type="text" name="name"/> <br>
         Description: <textarea name="description" placeholder="Enter in a description"></textarea> <br>
         Date/Time: <input type="text" name="dateTime"/> <br>
         Category: <input type="text" name="category"/> <br>
         Location: <input type="text" name="place"/> <br>
-
+        Image <input type="file" name="image" id="image" /> <br><br>
 
         {{ csrf_field() }}
         <input type="submit">

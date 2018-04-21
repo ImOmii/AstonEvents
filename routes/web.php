@@ -18,13 +18,16 @@ Route::get('/login', 'LoginController@index');
 
 Route::get('events', 'EventController@index');              //GET ALL EVENTS
 Route::get('events/create', 'EventController@create')->middleware('auth.basic');      //GET a form to post a event
+Route::get('events/likes', 'EventController@likes');
 Route::get('events/{id}', 'EventController@show');          //GET A SPECIFIC EVENT
+Route::get('events/{id}/edit', 'EventController@edit');          //GET A SPECIFIC EVENT
 Route::post('events', 'EventController@store')->middleware('auth.basic');             //POST A EVENT
+Route::post('events/update', 'EventController@update')->middleware('auth.basic');             //POST A EVENT
 
 Route::get('categories/{categoryName}', 'CategoryController@index');
 
 Route::get('organisers/events', 'OrganiserController@events')->middleware('auth.basic');
-
+Route::post('likes/{eventId}', 'LikeController@store');
 
 //Route::get('events', function () {
 //    return view('events');

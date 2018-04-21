@@ -95,6 +95,8 @@
 
 
 <div class="container text-center">
+
+    <img class="card-img-top" src="/images/{{ $event->image }}" alt="Card image" style="width:300px">
     <h1>{{ $event->name }}</h1>
 
     {{ $event->description }} <br>
@@ -102,6 +104,18 @@
     Category: {{ $event->category }} <br>
     Location: {{ $event->place }} <br>
     Created at: {{ $event->created_at }} <br>
+    Organiser contact: {{ $event->contact }} <br>
+    Likes: {{ $event->likes }} <br>
+
+    <form action="/likes/{{$event->id}}" method="post">
+        @csrf
+        <button type="submit" class="btn btn-primary">Like</button>
+    </form>
+    <br>
+
+    @if (\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::id() == $event->organiser_id)
+        <a class="btn btn-primary" href="/events/{{ $event->id }}/edit">Edit Event</a>
+    @endif
 </div>
 
 

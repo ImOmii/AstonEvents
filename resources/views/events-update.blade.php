@@ -85,16 +85,9 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {{--<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>--}}
-                @auth
-                    You are logged in
-                <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <input type="submit" value="Logout"/>
-                </form>
-                @else
-                    <li><a class="nav-link" href="{{ route('login') }}"><span class="">{{ __('Login') }}</span></a></li><
-                    <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
-                @endauth
+
+                <li><a class="nav-link" href="{{ route('login') }}"><span class="">{{ __('Login') }}</span></a></li><
+                <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
             </ul>
         </div>
     </div>
@@ -102,37 +95,35 @@
 
 
 <div class="container text-center">
-    <h3>{{ $categoryName }}</h3><br>
-    <div class="row">
-        <p>Sorted by category</p>
+    <h1>Update an event</h1>
 
-        @if (Route::has('login'))
-            <div class="top-right links">
-                @auth
-                    <a href="{{ url('/home') }}">Home</a>
-                @else
-                    <a href="{{ route('login') }}">Login</a>
-                    <a href="{{ route('register') }}">Register</a>
-                    @endauth
-            </div>
+    <form action="{{ action('EventController@update') }}" method="post" enctype="multipart/form-data">
+        @if ($event)
+            <input type="hidden" value="{{ $event->id }}" name="eventId">
+
+            @if ($event->image)
+            <img class="card-img-top" src="/images/{{ $event->image }}" alt="Card image" style="width:300px"><br><br>
+            @endif
+            Event Name: <input type="text" name="name" value="{{ $event->name }}"/> <br>
+        Description: <textarea name="description" placeholder="Enter in a description">{{ $event->description }}</textarea> <br>
+        Date/Time: <input type="text" name="dateTime" value="{{ $event->time }}"/> <br>
+        Category: <input type="text" name="category"  value="{{ $event->category }}"/> <br>
+        Location: <input type="text" name="place" value="{{ $event->place }}"/> <br>
+        Replace Image: <input type="file" name="image" id="image" /> <br><br>
+
+        {{ csrf_field() }}
+        <input type="submit">
+        @else
+            Event not found
         @endif
-
-        @foreach ($events as $event)
-            <div class="card" style="width:100px">
-                <img class="card-img-top" src="/images/{{ $event->image }}" alt="Card image" style="width:100%">
-                <div class="card-body">
-                    <h4 class="card-title">{{ $event->name }}</h4>
-                    <a href="/events/{{ $event->id }}" class="btn btn-primary">View</a>
-                </div>
-            </div>
-            <br>
-        @endforeach
+    </form>
+</div>
 
 
-        {{--<div class="well">--}}
-        {{--<p>Some text..</p>--}}
-        {{--</div>--}}
-    </div>
+{{--<div class="well">--}}
+{{--<p>Some text..</p>--}}
+{{--</div>--}}
+</div>
 </div>
 </div><br>
 

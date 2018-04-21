@@ -101,10 +101,10 @@
 
         @foreach ($events as $event)
             <div class="card" style="width:100px">
-                <img class="card-img-top" src="images/img_avatar (1).png" alt="Card image" style="width:100%">
+                <img class="card-img-top" src="/images/{{ $event->image }}" alt="Card image" style="width:100%">
                 <div class="card-body">
                     <h4 class="card-title">{{ $event->name }}</h4>
-                    <a href="#" class="btn btn-primary">View</a>
+                    <a href="/events/{{$event->id}}" class="btn btn-primary">View</a>
                 </div>
             </div>
             <br>
