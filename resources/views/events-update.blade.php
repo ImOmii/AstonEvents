@@ -73,7 +73,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Aston Events</a>
+            <a class="navbar-brand" href="/">Aston Events</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
@@ -85,6 +85,20 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {{--<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>--}}
+
+                <ul class="nav navbar-nav navbar-right">
+                    {{--<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>--}}
+                    @auth
+                    You are logged in
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <input type="submit" value="Logout"/>
+                    </form>
+                    @else
+                        <li><a class="nav-link" href="{{ route('login') }}"><span class="">{{ __('Login') }}</span></a></li><
+                        <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                        @endauth
+                </ul>
 
                 <li><a class="nav-link" href="{{ route('login') }}"><span class="">{{ __('Login') }}</span></a></li><
                 <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>

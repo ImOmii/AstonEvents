@@ -73,21 +73,43 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Aston Events</a>
+            <a class="navbar-brand" href="/">Aston Events</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li class="active"><a href="#">Events</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/categories/culture">Culture</a></li>
+                <li><a href="/categories/sports">Sports</a></li>
+                <li><a href="/categories/other">Other</a></li>
+                <li><a href="/events/likes">Most Liked</a></li>
+                <li><a href="/events">All events</a></li>
+                @auth
+                <li class="active"><a href="/events/create">Create Event</a></li>
+                @endauth
+                {{--<li><a href="#">Events</a></li>--}}
+                {{--<li><a href="#">Contact</a></li>--}}
 
             </ul>
+            </ul>
             <ul class="nav navbar-nav navbar-right">
+
+                <ul class="nav navbar-nav navbar-right">
+                    {{--<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>--}}
+                    @auth
+                    You are logged in
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <input type="submit" value="Logout"/>
+                    </form>
+                    @else
+                        <li><a class="nav-link" href="{{ route('login') }}"><span class="">{{ __('Login') }}</span></a></li><
+                        <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                        @endauth
+                </ul>
                 {{--<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>--}}
 
-                <li><a class="nav-link" href="{{ route('login') }}"><span class="">{{ __('Login') }}</span></a></li><
-                <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                {{--<li><a class="nav-link" href="{{ route('login') }}"><span class="">{{ __('Login') }}</span></a></li><--}}
+                {{--<li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>--}}
             </ul>
         </div>
     </div>
@@ -100,10 +122,11 @@
     <form action="{{ action('EventController@store') }}" method="post" enctype="multipart/form-data">
         Event Name: <input type="text" name="name"/> <br>
         Description: <textarea name="description" placeholder="Enter in a description"></textarea> <br>
-        Date/Time: <input type="text" name="dateTime"/> <br>
+        {{--Date/Time: <input type="text" name="dateTime"/> <br>--}}
+        Date/Time: <input type="datetime-local" name="bdaytime"><br>
         Category: <input type="text" name="category"/> <br>
         Location: <input type="text" name="place"/> <br>
-        Image <input type="file" name="image" id="image" /> <br><br>
+        Image: <input style="display: block" type="file" name="image" id="image" /> <br>
 
         {{ csrf_field() }}
         <input type="submit">

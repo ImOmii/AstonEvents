@@ -79,13 +79,13 @@
                 {{--<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>--}}
 
                 @auth
-                You are logged in
+                <p style="color: #0000F0">You are logged in</p>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                     @csrf
                     <input type="submit" value="Logout"/>
                 </form>
                 @else
-                    <li><a class="nav-link" href="{{ route('login') }}"><span class="">{{ __('Login') }}</span></a></li><
+                    <li><a class="nav-link" href="{{ route('login') }}"><span class="">{{ __('Login') }}</span></a></li>
                     <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                     @endauth
             </ul>
@@ -131,31 +131,15 @@
     <h3>What We Do</h3><br>
     <div class="row">
 
-        @foreach ($events as $event)
-            <div class="card">
-            {{ $event->description }}
-            </div>
-        @endforeach
-
-        <form action="something.php" method="POST">
-            <input name="blab"/>
-        </form>
-        <!--<div class="col-sm-4">-->
-        <!--<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">-->
-        <!--<p>Current Project</p>-->
-        <!--</div>-->
-        <!--<div class="col-sm-4">-->
-        <!--<img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">-->
-        <!--<p>Project 2</p>-->
     </div>
     <div class="col-lg-6">
         <div class="well">
-            <p>Lorem ipsum dolor sit amet, et eius partiendo nec, pro dico dicunt bonorum ea. Dolor incorrupte usu eu, an vim dicam tollit senserit. Probatus neglegentur consectetuer ut vim, ei quodsi saperet mei. At nam semper appetere consectetuer, phaedrum pericula ei eam. Eruditi nominati reprimique id nam, per case nemore maiestatis ne. In vocent nonumes pri.
+            <p>Have a look at our amazing university events, we have three categories (Culture, Sport and other) so feel free to look around you may find an event you like!
             </p>
         </div>
-        <div class="well">
-            <p>Some text..</p>
-        </div>
+        {{--<div class="well">--}}
+            {{--<p>Some text..</p>--}}
+        {{--</div>--}}
     </div>
 </div>
 </div><br>
