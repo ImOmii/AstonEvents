@@ -77,10 +77,17 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li class="active"><a href="#">Events</a></li>
-                <li><a href="#">Contact</a></li>
+                <li ><a href="/">Home</a></li>
+                <li><a href="/categories/culture">Culture</a></li>
+                <li><a href="/categories/sports">Sports</a></li>
+                <li><a href="/categories/other">Other</a></li>
+                <li class="active"><a href="/events/likes">Most Liked</a></li>
+                <li><a href="/events">All events</a></li>
+                @auth
+                <li><a href="/events/create">Create Event</a></li>
+                @endauth
+                {{--<li><a href="#">Events</a></li>--}}
+                {{--<li><a href="#">Contact</a></li>--}}
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -104,7 +111,7 @@
     Category: {{ $event->category }} <br>
     Location: {{ $event->place }} <br>
     Created at: {{ $event->created_at }} <br>
-    Organiser contact: {{ $event->contact }} <br>
+    Organiser contact: <a href="mailto: {{ $event->contact }}">{{$event->contact}}</a> <br>
     Likes: {{ $event->likes }} <br>
 
     <form action="/likes/{{$event->id}}" method="post">

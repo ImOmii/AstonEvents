@@ -20,12 +20,6 @@ class EventController extends Controller
 
     }
 
-    public function show($id)
-    {
-        $event = Event::find($id);
-
-        return view('events-view')->with(array('event' => $event));
-    }
 
     public function likes()
     {
@@ -42,10 +36,14 @@ class EventController extends Controller
         return view('events-update')->with(array('event' => $event));
     }
 
-    public function create()
+    public function show($id)
     {
-        return view('events-create');
+        $event = Event::find($id);
+
+        return view('events-view')->with(array('event' => $event));
     }
+
+
     
     public function store(Request $request)
     {
@@ -85,6 +83,11 @@ class EventController extends Controller
         return redirect()->back()->with('message', 'Created event');
     }
 
+    public function create()
+    {
+        return view('events-create');
+    }
+
     public function update(Request $request)
     {
         $name = $request->input('name');
@@ -103,6 +106,11 @@ class EventController extends Controller
         $success = $event->save();
 
         return redirect()->back()->with('message', 'Updated event');
+    }
+
+    protected function remove()
+    {
+
     }
 
 }
