@@ -22,11 +22,11 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
+                <li ><a href="/">Home</a></li>
                 <li><a href="/categories/culture">Culture</a></li>
                 <li><a href="/categories/sports">Sports</a></li>
                 <li><a href="/categories/other">Other</a></li>
-                <li><a href="/events/likes">Most Liked</a></li>
+                <li class="active"><a href="/events/likes">Most Liked</a></li>
                 <li><a href="/events">All events</a></li>
                 @auth
                 <li><a href="/events/create">Create Event</a></li>
@@ -47,9 +47,9 @@
 
 
 <div class="container text-center">
-    <h3> Events for Studentss</h3><br>
+    <h3> Most Liked Events!</h3><br>
     <div class="row">
-        <p>Do you want to view stuff?</p>
+        <p>Have a look at our most liked events!</p>
 
 
         @foreach ($events as $event)
