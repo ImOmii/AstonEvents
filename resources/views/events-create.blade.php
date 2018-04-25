@@ -125,8 +125,8 @@
         Description: <textarea name="description"  style="display: block; margin: auto; width: 60%; border: 3px solid #000000; padding: 10px;} placeholder="Enter in a description"></textarea> <br>
         {{--Date/Time: <input type="text" name="dateTime"/> <br>--}}
         Date/Time: <input type="datetime-local" style="display: block; margin: auto; width: 60%; border: 3px solid #000000; padding: 10px;} name="bdaytime"><br>
-        Category: <input type="text" style="display: block; margin: auto; width: 60%; border: 3px solid #000000; padding: 10px;} name="category"/> <br>
-        Location: <input type="text" style="display: block; margin: auto; width: 60%; border: 3px solid #000000; padding: 10px; name="place"/> <br>
+        Category: <input type="text"  name="category"/> <br>
+        Location: <input type="text"  name="place"/> <br>
         Image: <input style="display: block; margin: auto; width: 60%; border: 3px solid #000000; padding: 10px;}" type="file" name="image" id="image" /> <br>
 
         {{ csrf_field() }}
