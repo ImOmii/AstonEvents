@@ -77,31 +77,36 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li class="active"><a href="#">Events</a></li>
-                <li><a href="#">Contact</a></li>
-
+                <li><a href="/">Home</a></li>
+                <li><a href="/categories/culture">Culture</a></li>
+                <li><a href="/categories/sports">Sports</a></li>
+                <li><a href="/categories/other">Other</a></li>
+                <li><a href="/events/likes">Most Liked</a></li>
+                <li><a href="/events">All events</a></li>
+                @auth
+                <li class="active" style="color: #0c5460;"><a href="/events/create">Create Event</a></li>
+                @endauth
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {{--<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>--}}
 
                 <ul class="nav navbar-nav navbar-right">
                     {{--<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>--}}
+                    {{--<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>--}}
                     @auth
-                    You are logged in
+                    <p style="color: #0000F0">You are logged in</p>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
                         @csrf
                         <input type="submit" value="Logout"/>
                     </form>
                     @else
-                        <li><a class="nav-link" href="{{ route('login') }}"><span class="">{{ __('Login') }}</span></a></li>
+                        <li><a class="nav-link" href="{{ route('login') }}"><span class="">{{ __('Login') }}</span></a></li><
                         <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                         @endauth
                 </ul>
 
-                <li><a class="nav-link" href="{{ route('login') }}"><span class="">{{ __('Login') }}</span></a></li><
-                <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                {{--<li><a class="nav-link" href="{{ route('login') }}"><span class="">{{ __('Login') }}</span></a></li><--}}
+                {{--<li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>--}}
             </ul>
         </div>
     </div>
@@ -123,7 +128,7 @@
         Date/Time: <input type="text" name="dateTime" value="{{ $event->time }}"/> <br>
         Category: <input type="text" name="category"  value="{{ $event->category }}"/> <br>
         Location: <input type="text" name="place" value="{{ $event->place }}"/> <br>
-        Replace Image: <input type="file" name="image" id="image" /> <br><br>
+            Replace Image: <input type="file" name="image" id="image"/> <br><br>
 
         {{ csrf_field() }}
         <input type="submit">

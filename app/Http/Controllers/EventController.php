@@ -20,7 +20,7 @@ class EventController extends Controller
 
     }
 
-
+    //Store the likes in opposite order
     public function likes()
     {
         $events = Event::all();
@@ -28,7 +28,7 @@ class EventController extends Controller
 
         return view('events')->with(array('events' => $events));
     }
-
+    //Simply to allow the organiser to edit each event made referenced by $id
     public function edit($id)
     {
         $event = Event::find($id);
@@ -44,7 +44,7 @@ class EventController extends Controller
     }
 
 
-    
+    //Allow us to get instance of current request and store information inputted
     public function store(Request $request)
     {
         $name = $request->input('name');
@@ -57,13 +57,13 @@ class EventController extends Controller
         $event->name = $name;
         $event->description = $description;
         $event->time = $dateTime;
-        $event->organiser_id = Auth::id();
+        $event->organiser_id = Auth::id(); //access the oraganiser via the Auth facade
         $event->place = $place;
         $event->category = $category;
 
         if ($request->has('image')) {
             $validator = Validator::make($request->all(),
-                array('image' => 'mimes:jpeg,bmp,png')
+                array('image' => 'mimes:jpeg,bmp,png') // returns the media types of image so it will process thorugh server
             );
 
             if(!$validator->valid()) {
@@ -95,8 +95,28 @@ class EventController extends Controller
         $dateTime = $request->input('dateTime');
         $category = $request->input('category');
         $place = $request->input('place');
+        $image = $request->input('image');
 
         $event = Event::find($request->input('eventId'));
+
+        if ($request->has('image')) {
+            $validator = Validator::make($request->all(),
+                array('image' => 'mimes:jpeg,bmp,png') // returns the media types of image so it will process thorugh server
+            );
+
+            if(!$validator->valid()) {
+                return redirect()->back()->with('errors', $validator->errors());
+            }
+            $image = $request->file('image');
+
+            $filename = now()->timestamp . $image->getClientOriginalName();
+
+
+            $image->move('images', $filename);
+
+            $event->image = $filename;
+        }
+
         $event->name = $name;
         $event->description = $description;
         $event->time = $dateTime;
@@ -105,7 +125,7 @@ class EventController extends Controller
         $event->category = $category;
         $success = $event->save();
 
-        return redirect()->back()->with('message', 'Updated event');
+        return redirect()->back()->with('message', 'You have successfully updated the event you made!');
     }
 
     protected function remove()

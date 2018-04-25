@@ -28,10 +28,9 @@ Route::get('categories/{categoryName}', 'CategoryController@index');
 
 Route::get('organisers/events', 'OrganiserController@events')->middleware('auth.basic');
 Route::post('likes/{eventId}', 'LikeController@store');
-
-//Route::get('events', function () {
-//    return view('events');
-//});
+Route::get('tests', function () {
+    return view('test');
+});
 
 
 Auth::routes();;

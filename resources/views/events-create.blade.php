@@ -62,6 +62,7 @@
         }
 
     </style>
+
 </head>
 <body>
 
@@ -120,12 +121,13 @@
 <div class="container text-center">
     <h1>Create a new event</h1>
 
+
     <form action="{{ action('EventController@store') }}" method="post" enctype="multipart/form-data">
-        Event Name: <input type="text" name="name"/> <br>
-        Description: <textarea name="description"  style="display: block; margin: auto; width: 60%; border: 3px solid #000000; padding: 10px;} placeholder="Enter in a description"></textarea> <br>
+        Event Name: <input type="text"  name="name"/> <br>
+        Description: <textarea name="description"  style="display: block; margin: auto; width: 60%; border: 3px solid #000000; padding: 10px;}      placeholder="Enter in a description"></textarea> <br>
         {{--Date/Time: <input type="text" name="dateTime"/> <br>--}}
-        Date/Time: <input type="datetime-local"  name="bdaytime" style="display: block; margin: auto; width: 60%; border: 3px solid #000000; padding: 10px;"><br>
-        Category: <input type="text" style="display: block; margin: auto; width: 60%; border: 3px solid #000000; padding: 10px;}" name="category"/> <br>
+        Date/Time: <input type="datetime-local"  name="bdaytime" placeholder="Email Address"style="display: block; margin: auto; width: 60%; border: 3px solid #000000; padding: 10px;"><br>
+        Category: (Simply type in: SPORTS, CULTURE or OTHER) <input type="text" style="display: block; margin: auto; width: 60%; border: 3px solid #000000; padding: 10px;}" name="category"/> <br>
         Location: <input type="text" style="display: block; margin: auto; width: 60%; border: 3px solid #000000; padding: 10px;}" name="place"/> <br>
         Image: <input style="display: block; margin: auto; width: 60%; border: 3px solid #000000; padding: 10px;}" type="file" name="image" id="image" /> <br>
 

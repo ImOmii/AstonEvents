@@ -110,16 +110,7 @@
     <div class="row">
         <p>Sorted by category</p>
 
-        @if (Route::has('login'))
-            <div class="top-right links">
-                @auth
-                    <a href="{{ url('/home') }}">Home</a>
-                @else
-                    <a href="{{ route('login') }}">Login</a>
-                    <a href="{{ route('register') }}">Register</a>
-                    @endauth
-            </div>
-        @endif
+
 
         @foreach ($events as $event)
             <div class="card" style="width:100px">

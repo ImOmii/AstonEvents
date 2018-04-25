@@ -9,6 +9,7 @@ class CategoryController extends Controller
 {
     public function index($categoryName)
     {
+        //Make this string Uppercase at all times when inputted into database
         $categoryName = strtoupper($categoryName);
 
         $events = Event::where('category', $categoryName)->get();
