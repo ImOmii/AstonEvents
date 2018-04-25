@@ -95,7 +95,7 @@
                         <input type="submit" value="Logout"/>
                     </form>
                     @else
-                        <li><a class="nav-link" href="{{ route('login') }}"><span class="">{{ __('Login') }}</span></a></li><
+                        <li><a class="nav-link" href="{{ route('login') }}"><span class="">{{ __('Login') }}</span></a></li>
                         <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                         @endauth
                 </ul>

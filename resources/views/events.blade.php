@@ -38,7 +38,7 @@
             <ul class="nav navbar-nav navbar-right">
                 {{--<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>--}}
 
-                <li><a class="nav-link" href="{{ route('login') }}"><span class="">{{ __('Login') }}</span></a></li><
+                <li><a class="nav-link" href="{{ route('login') }}"><span class="">{{ __('Login') }}</span></a></li>
                 <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
             </ul>
         </div>
