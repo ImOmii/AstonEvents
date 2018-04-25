@@ -90,7 +90,7 @@
             <ul class="nav navbar-nav navbar-right">
                 {{--<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>--}}
                 @auth
-                    You are logged in
+                <p style="color: #0000F0">You are logged in</p>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                     @csrf
                     <input type="submit" value="Logout"/>

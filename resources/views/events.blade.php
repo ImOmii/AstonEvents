@@ -27,7 +27,7 @@
                 <li><a href="/categories/sports">Sports</a></li>
                 <li><a href="/categories/other">Other</a></li>
                 <li class="active"><a href="/events/likes">Most Liked</a></li>
-                <li><a href="/events">All events</a></li>
+                <li class="active"><a href="/events">All events</a></li>
                 @auth
                 <li><a href="/events/create">Create Event</a></li>
                 @endauth
@@ -38,9 +38,19 @@
             <ul class="nav navbar-nav navbar-right">
                 {{--<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>--}}
 
-                <li><a class="nav-link" href="{{ route('login') }}"><span class="">{{ __('Login') }}</span></a></li>
-                <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
-            </ul>
+
+                    {{--<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>--}}
+                @auth
+                <p style="color: #0000F0">You are logged in</p>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <input type="submit" value="Logout"/>
+                </form>
+                    @else
+                        <li><a class="nav-link" href="{{ route('login') }}"><span class="">{{ __('Login') }}</span></a></li>
+                        <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                        @endauth
+                </ul>
         </div>
     </div>
 </nav>
@@ -49,11 +59,11 @@
 <div class="container text-center">
     <h3> Most Liked Events!</h3><br>
     <div class="row">
-        <p>Have a look at our most liked events!</p>
+        <p>Have a look at our most liked events! Simply click on "Most Liked" to view what has been liked the most, and "All Events" to view every event that has been made.</p>
 
 
         @foreach ($events as $event)
-            <div class="card col-sm" style="width:30%">
+            <div class="card col-sm" style="width:20%">
                 <img class="card-img-top" src="/images/{{ $event->image }}" alt="Card image" style="width:100%">
                 <div class="card-body">
                     <h4 class="card-title">{{ $event->name }}</h4>
@@ -68,12 +78,6 @@
         {{--</div>--}}
     </div>
 
-    <div class="row">
-        <div class="col">col</div>
-        <div class="col">col</div>
-        <div class="col">col</div>
-        <div class="col">col</div>
-    </div>
 </div>
 </div><br>
 

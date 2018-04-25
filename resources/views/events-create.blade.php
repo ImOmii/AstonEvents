@@ -84,7 +84,7 @@
                 <li><a href="/events/likes">Most Liked</a></li>
                 <li><a href="/events">All events</a></li>
                 @auth
-                <li class="active"><a href="/events/create">Create Event</a></li>
+                <li class="active" style="color: #0c5460;"><a href="/events/create">Create Event</a></li>
                 @endauth
                 {{--<li><a href="#">Events</a></li>--}}
                 {{--<li><a href="#">Contact</a></li>--}}
@@ -93,10 +93,11 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
 
+
                 <ul class="nav navbar-nav navbar-right">
                     {{--<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>--}}
                     @auth
-                    You are logged in
+                    <p style="color: #0000F0">You are logged in</p>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
                         @csrf
                         <input type="submit" value="Logout"/>
@@ -121,12 +122,12 @@
 
     <form action="{{ action('EventController@store') }}" method="post" enctype="multipart/form-data">
         Event Name: <input type="text" name="name"/> <br>
-        Description: <textarea name="description" placeholder="Enter in a description"></textarea> <br>
+        Description: <textarea name="description"  style="display: block; margin: auto; width: 60%; border: 3px solid #000000; padding: 10px;} placeholder="Enter in a description"></textarea> <br>
         {{--Date/Time: <input type="text" name="dateTime"/> <br>--}}
-        Date/Time: <input type="datetime-local" name="bdaytime"><br>
-        Category: <input type="text" name="category"/> <br>
-        Location: <input type="text" name="place"/> <br>
-        Image: <input style="display: block" type="file" name="image" id="image" /> <br>
+        Date/Time: <input type="datetime-local" style="display: block; margin: auto; width: 60%; border: 3px solid #000000; padding: 10px;} name="bdaytime"><br>
+        Category: <input type="text" style="display: block; margin: auto; width: 60%; border: 3px solid #000000; padding: 10px;} name="category"/> <br>
+        Location: <input type="text" style="display: block; margin: auto; width: 60%; border: 3px solid #000000; padding: 10px; name="place"/> <br>
+        Image: <input style="display: block; margin: auto; width: 60%; border: 3px solid #000000; padding: 10px;}" type="file" name="image" id="image" /> <br>
 
         {{ csrf_field() }}
         <input type="submit">
